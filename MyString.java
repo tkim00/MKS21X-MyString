@@ -25,6 +25,15 @@ public class MyString implements CharSequence,Comparable<CharSequence>{
     return sub;
   }
   public String toString(){
-    return subSequence(0, data.length);
+    return subSequence(0, data.length);//this is taking the subSequence of the data as a whole.
+  }
+  public int compareTo(CharSequence o){
+    if(o == null){
+      throw new NullPointerException("the specified object cannot be null.");
+    }
+    //if()
+    if(length() > o.length()) return 1;
+    if(length() < o.length()) return -1;
+    if(length() == o.length()) return 0;
   }
 }
