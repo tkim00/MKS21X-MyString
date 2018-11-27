@@ -2,6 +2,9 @@ public class MyString implements CharSequence,Comparable<CharSequence>{
   private char[] data;
   public MyString(CharSequence s){
     data = new char[s.length()];
+    for(int i = 0; i < s.length(); i++){
+      data[i] = s.charAt(i);
+    }
   }
 
   public char charAt(int index){
@@ -15,8 +18,7 @@ public class MyString implements CharSequence,Comparable<CharSequence>{
   }
   public CharSequence subSequence(int start, int end){
     if(start < 0 || end < 0 || end > length() || start > end){
-      throw new IndexOutOfBoundsException("starting or ending index cannot be negative.
-      ending index cannot be greater than length(). starting index cannot be greater than ending index.");
+      throw new IndexOutOfBoundsException("starting or ending index cannot be negative. ending index cannot be greater than length(). starting index cannot be greater than ending index.");
     }
     String sub = "";
     for(int i = start; i < end; i++){
@@ -25,7 +27,15 @@ public class MyString implements CharSequence,Comparable<CharSequence>{
     return sub;
   }
   public String toString(){
-    return subSequence(0, data.length);//this is taking the subSequence of the data as a whole.
+    //System.out.println(length());
+    //return subSequence(0, data.length);
+    String str = "";
+    for(int i = 0; i < length(); i++){
+      //System.out.println(data[i]);
+      str+=data[i];
+    }
+    //System.out.println(str);
+    return str;
   }
   public int compareTo(CharSequence o){
     if(o == null){
