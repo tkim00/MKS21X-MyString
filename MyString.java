@@ -32,8 +32,20 @@ public class MyString implements CharSequence,Comparable<CharSequence>{
       throw new NullPointerException("the specified object cannot be null.");
     }
     //if()
-    if(length() > o.length()) return 1;
-    if(length() < o.length()) return -1;
-    if(length() == o.length()) return 0;
+    if(this.equals(o)){
+      return 0;
+    }
+    int smaller = 0;
+    if(length() < o.length()){
+      smaller = length();
+    }else{
+      smaller = o.length();
+    }
+    for(int i = 0; i < smaller; i++){
+      if(this.charAt(i) != o.charAt(i)){
+        return this.charAt(i) - o.charAt(i);
+      }
+    }
+    return length() - o.length();
   }
 }
